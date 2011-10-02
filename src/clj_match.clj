@@ -137,5 +137,7 @@
 		    ~(make-lazy-clauses rest))))))]
       (let [lazy-clauses (make-lazy-clauses clauses)]
 	`(let [~val-sym ~val]
-	   (some (fn [[matched?# ret#]] (and matched?# ret#))
-		 ~lazy-clauses))))))
+	   (second
+            (some
+             (fn [[matched?# ret#]] (if matched?# [matched?# ret#] false))
+             ~lazy-clauses)))))))

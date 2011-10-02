@@ -76,3 +76,9 @@
 	   [x]	x)))
   )
 
+
+(deftest test-with-nil-result
+  (is (= nil
+         (match ["hello" "world"]
+           ("hello" "world" & rest) nil
+           _ 'not_nil))))
