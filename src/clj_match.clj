@@ -82,6 +82,7 @@
      true
      (let [car-sym (gensym), cdr-sym (gensym)]
        `(and (coll? ~val)
+             (> (count ~val) 0)
 	     (let [~car-sym (first ~val),
 		   ~cdr-sym (rest ~val)]
 	       (and ~(compile-clause car-sym (first pat))

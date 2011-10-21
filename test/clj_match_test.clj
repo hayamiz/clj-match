@@ -74,7 +74,17 @@
   (is (= 1
 	 (match '(1)
 	   [x]	x)))
-  )
+
+  (is (= 'OK
+         (match ()
+           (x)	'NG
+           ()	'OK)))
+
+  (is (= 'OK
+         (match [1]
+           (x y)	'NG
+           (x)	'OK)))
+)
 
 
 (deftest test-with-nil-result
